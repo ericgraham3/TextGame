@@ -1,9 +1,9 @@
 public class Treasure extends Item{
     private int value;
-
+// TODO are we correctly constructing treasure?
     public Treasure(String itemName, int value){
         super.setItemName(itemName);
-        super.setItemType("game.Treasure");
+        super.setItemType("Treasure");
         this.value = value;
     }
 

@@ -1,29 +1,29 @@
 public class Item {
     private static int itemIdCounter = 0;
-    private final int uniqueId;
+    private final int uniqueID;
     String itemType;
     String itemName;
     String itemDescription;
 
-// look into why we have two constructors
+// TODO what is the purpose of itemType if we have subclasses? can you create a subclass from a base class constructor?
     public Item() {
         itemIdCounter++;
-        this.uniqueId = itemIdCounter;
+        this.uniqueID = itemIdCounter;
     }
 
     public Item(String itemType, String itemName) {
         itemIdCounter++;
         this.itemType = itemType;
         this.itemName = itemName;
-        this.uniqueId = itemIdCounter;
+        this.uniqueID = itemIdCounter;
         }
 
     public String getItemType() {
         return itemType;
     }
 
-    public int getUniqueId() {
-        return uniqueId;
+    public int getUniqueID() {
+        return uniqueID;
     }
 
     public void setItemType(String itemType) {

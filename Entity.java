@@ -1,19 +1,16 @@
+import java.util.ArrayList;
+
 public class Entity {
     private static int entityIdCounter = 0;
     private final int uniqueID;
     private String name;
     private String alignment;
     private int armorRating = 0;
-    private int movementSpeed = 0;
     private int hitPoints = 10;
     private int wounds = 0;
-    private int strength = 0;
-    private int agility = 0;
-    private int stamina = 0;
-    private int intelligence = 0;
-    private int wisdom = 0;
-    private int rizz = 0;
-    private int luck = 0;
+    private int initiative = 0;
+
+    private ArrayList<Item> inventory = new ArrayList<>();
 
     // constructor
     public Entity(String name, String alignment){
@@ -29,7 +26,7 @@ public class Entity {
         if (attackRoll >= target.armorRating){
             int damageAmount = Mechanics.rollDice(damageSize, 0);
             target.takeDamage(damageAmount);
-            System.out.println(attacker.getName() +" deals " +damageAmount +" damage to " +target.getName());
+            System.out.println(attacker.getName() +" attacks " +target.getName() +" and deals " +damageAmount +" damage to them.");
         }
         else {
             System.out.println(attacker.getName() +" attacks " +target.getName() +" but misses.");
@@ -47,7 +44,7 @@ public class Entity {
         return this.hitPoints - this.wounds;
     }
 
-    // setters and getters
+    // getters and setters
 
     public int getUniqueID() {
         return uniqueID;
@@ -77,14 +74,6 @@ public class Entity {
         this.armorRating = armorRating;
     }
 
-    public int getMovementSpeed() {
-        return movementSpeed;
-    }
-
-    public void setMovementSpeed(int movementSpeed) {
-        this.movementSpeed = movementSpeed;
-    }
-
     public int getHitPoints() {
         return hitPoints;
     }
@@ -101,59 +90,21 @@ public class Entity {
         this.wounds = wounds;
     }
 
-    public int getStrength() {
-        return strength;
+    public int getInitiative() {
+        return initiative;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    public void setInitiative(int initiative) {
+        this.initiative = initiative;
     }
 
-    public int getAgility() {
-        return agility;
+    public ArrayList<Item> getInventory() {
+        for (Item item : inventory){
+            System.out.println(item.getItemName());
+        }
+        return inventory;
     }
-
-    public void setAgility(int agility) {
-        this.agility = agility;
-    }
-
-    public int getStamina() {
-        return stamina;
-    }
-
-    public void setStamina(int stamina) {
-        this.stamina = stamina;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public int getWisdom() {
-        return wisdom;
-    }
-
-    public void setWisdom(int wisdom) {
-        this.wisdom = wisdom;
-    }
-
-    public int getRizz() {
-        return rizz;
-    }
-
-    public void setRizz(int rizz) {
-        this.rizz = rizz;
-    }
-
-    public int getLuck() {
-        return luck;
-    }
-
-    public void setLuck(int luck) {
-        this.luck = luck;
+    public void addToInventory(Item item) {
+        inventory.add(item);
     }
 }

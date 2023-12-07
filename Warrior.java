@@ -2,17 +2,19 @@ import java.util.ArrayList;
 
 public class Warrior extends Character {
     private String specialty;
+    // TODO figure out whether to keep the "weapon" variable in the Warrior class, to do away with it entirely and house in inventory, or something else
     private Weapon weapon;
     private int armorBonus;
     private int attackBonus;
     private int damageBonus;
-    private ArrayList<Item> inventory = new ArrayList<>();
+
 
     public Warrior(String specialty, String name, String playerName, String alignment, String description) {
         super(name, alignment, playerName, description);
         this.specialty = specialty;
         super.setArmorRating(10);
 
+        // TODO probably don't need specialties, maybe just drop archer since range means nothing? Either way, handle this as subclass
         switch (specialty) {
             case "Knight":
                 weapon = new Weapon("longsword");
@@ -31,6 +33,7 @@ public class Warrior extends Character {
         }
     }
     // functional methods
+    // TODO what makes a warrior's attack special?
     public void attack(Entity target){
         int attackRoll = Mechanics.rollDice(20, this.attackBonus);
         System.out.println(this.getName() +"'s attack roll is: " +attackRoll);

@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class Character extends Entity {
     private String playerName;
     private String description;
-    private ArrayList<Item> inventory = new ArrayList<>();
 
     public Character(String name, String alignment, String playerName, String description){
         super(name, alignment);
@@ -26,15 +25,7 @@ public class Character extends Entity {
     public void setDescription(String description) {
         this.description = description;
     }
-    public ArrayList<Item> getInventory() {
-        for (Item item : inventory){
-            System.out.println(item.getItemName());
-        }
-        return inventory;
-    }
-    public void addToInventory(Item item) {
-        inventory.add(item);
-    }
+
     public void lootLocation(Location location) {
         for (int i = 0; i<location.getLocation().size(); i++){ // second and third elements of this loop are evaluated/executed every time we step through loop
             if (location.getLocation().get(i) instanceof Item){

@@ -1,18 +1,17 @@
 import java.util.ArrayList;
 
 public class Location {
-    private static int uniqueIdCounter = 0;
-
+    private static int locationIdCounter = 0;
     private String name;
     private String description;
-    private int locationId;
+    private int uniqueID;
     private ArrayList<Object> location = new ArrayList<>();
 
     public Location(String name, String description) {
-        uniqueIdCounter++;
+        locationIdCounter++;
         this.name = name;
         this.description = description;
-        this.locationId = uniqueIdCounter;
+        this.uniqueID = locationIdCounter;
     }
 
     public void addEntity(Entity entity){
@@ -21,20 +20,6 @@ public class Location {
 
     public void addItem(Item item){
         location.add(item);
-    }
-
-    public void addRoute(Route route){
-        location.add(route);
-    }
-
-    public ArrayList<Route> getRoute(){
-        ArrayList<Route> routes = new ArrayList<>();
-        for (Object o : location){
-            if (o instanceof Route){
-                routes.add((Route)o);
-            }
-        }
-        return routes;
     }
 
     public Entity getEntity(String name) {
@@ -60,6 +45,7 @@ public class Location {
         }
         return null;
     }
+
     public Item getItem() {
         for (Object obj : location) {
             if (obj instanceof Item) {
@@ -70,10 +56,12 @@ public class Location {
             }
         return null;
     }
+
     public Item testGet(Item object) {
         Item item = (Item) location.remove(location.indexOf(object));
         return item;
     }
+
     public String getName() {
         return name;
     }
@@ -98,8 +86,8 @@ public class Location {
         this.location = location;
     }
 
-    public int getLocationId() {
-        return locationId;
+    public int getUniqueID() {
+        return uniqueID;
     }
 }
 
