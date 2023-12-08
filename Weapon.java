@@ -2,6 +2,7 @@ public class Weapon extends Item{
     private int damageSize;
     private int attackBonus;
     private String weaponDescription;
+    private boolean isEquipped = false;
 
     public Weapon() {
     }
@@ -30,5 +31,13 @@ public class Weapon extends Item{
 
     public void setAttackBonus(int attackBonus) {
         this.attackBonus = attackBonus;
+    }
+
+    public boolean isEquipped() {
+        return isEquipped;
+    }
+
+    public void setEquipped(boolean equipped) {
+        isEquipped = equipped;
     }
 }

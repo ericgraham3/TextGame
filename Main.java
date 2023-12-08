@@ -1,86 +1,34 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        // test new character creation methods for Warrior
+        Archer testArcher = new Archer("Legolas, of Course", "Eric", "Good", "Looks like Orlando Bloom with long, silky hair");
+        Berserker testBerserker = new Berserker("Amleth", "Eric", "Neutral", "Looks like if Alexander Skarsgard got jacked af, totally natural");
+        Knight testKnight = new Knight("Ser Pounce", "Eric", "Good", "An adorable kitten in full armor, carrying a longsword and shield");
 
+        // create test Skeleton
+        Skeleton testSkeleton = new Skeleton();
 
-        // create a new Warrior
+        // create test location
+        Location testLocation = new Location("Plato's Cave", "An ordinary cave with a large fire in the middle, around which a handful of humans sit, transfixed by the shadows they see on the wall. Also, a skeleton is here.");
 
-        Warrior testWarrior = new Warrior("Knight", "Ser Pounce", "Eric", "Good", "An honorable Knight with a longsword and a beaten shield.");
-        System.out.println(testWarrior.getUniqueID());
+        // put three warriors and a skeleton in a room
+        testLocation.addEntity(testArcher);
+        testLocation.addEntity(testBerserker);
+        testLocation.addEntity(testKnight);
+        testLocation.addEntity(testSkeleton);
 
-        // create a new Skeleton
-
-        Skeleton testSkeleton = new Skeleton("Mr. Skeleton", "Dead", 1, "A reanimated human skeleton wielding a rusty short sword.");
-        System.out.println(testSkeleton.getUniqueID());
-
-        Location location1 = new Location("The Cave", "A damp, unlit cave filled with the bones of fallen adventurers.");
-        System.out.println(location1.getUniqueID());
-
-        location1.addEntity(testSkeleton);
-        location1.addEntity(testWarrior);
-        Item newItem = new Item("Gold Ring");
-        System.out.println(newItem.getUniqueID());
-        Item newItem2 = new Item("Silver ring");
-        System.out.println(newItem2.getUniqueID());
-        Item newItem3 = new Item("Broken Dagger");
-        System.out.println(newItem3.getUniqueID());
-        Item newItem4 = new Item("Empty potion bottle");
-        System.out.println(newItem4.getUniqueID());
-        Item newItem5 = new Item("Spellbook");
-        System.out.println(newItem5.getUniqueID());
-        location1.addItem(newItem);
-        location1.addItem(newItem2);
-        location1.addItem(newItem3);
-        location1.addItem(newItem4);
-        location1.addItem(newItem5);
-
-        Scanner scanner = new Scanner(System.in);
-        int choice;
-
-        // menu
-
-        do {
-            System.out.println(" ");
-            System.out.println("In a " +location1.getDescription() +" a warrior named " +testWarrior.getName() +" stumbled across an undead skeletal warrior named " +testSkeleton.getName() +". What happens?");
-
-            System.out.println(" ");
-            System.out.println("1: Make Ser Pounce fight Mr. Skeleton");
-            System.out.println("2: Make Mr. Skeleton attack Ser Pounce");
-            System.out.println("3: See how much health Ser Pounce has");
-            System.out.println("4: See how much health Mr. Skeleton has");
-            System.out.println("5: Make Ser Pounce take the treasure from this location");
-            System.out.println("6: Quit");
-            System.out.println(" ");
-            System.out.print("Enter your choice: ");
-
-            choice = scanner.nextInt();
-
-            switch (choice) {
-                case 1:
-                    testWarrior.attack(testSkeleton);
-                    break;
-                case 2:
-                    testSkeleton.attack(testWarrior);
-                    break;
-                case 3:
-                    System.out.println("Ser Pounce has " +testWarrior.getCurrentHealth() +" hit points left.");
-                    break;
-                case 4:
-                    System.out.println("Mr. Skeleton has " +testSkeleton.getCurrentHealth() +" hit points left.");
-                    break;
-                case 5:
-                    System.out.println(location1.getLocation().size());
-                    testWarrior.lootLocation(location1);
-                    System.out.println(testWarrior.getInventory());
-                    System.out.println(location1.getLocation().size());
-                case 6:
-                    System.out.println("Goodbye!");
-                    break;
-                default:
-                    System.out.println("Please enter the number that corresponds to your choice above.");
-            }
-        } while (choice!= 6);
+        // make them fight
+        testArcher.attack(testSkeleton);
+        testSkeleton.attack(testArcher);
+        testBerserker.attack(testSkeleton);
+        testKnight.attack(testSkeleton);
+        System.out.println("Archer health: " +testArcher.getCurrentHealth());
+        System.out.println("Berserker health: " +testBerserker.getCurrentHealth());
+        System.out.println("Knight health: " +testKnight.getCurrentHealth());
+        System.out.println("Skeleton health: " +testSkeleton.getCurrentHealth());
     }
 }

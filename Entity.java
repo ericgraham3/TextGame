@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Entity {
     private static int entityIdCounter = 0;
-    private final int uniqueID;
+    private final int uniqueId;
     private String name;
     private String alignment;
     private int armorRating = 0;
@@ -12,12 +12,12 @@ public class Entity {
 
     private ArrayList<Item> inventory = new ArrayList<>();
 
+    private String description;
+
     // constructor
-    public Entity(String name, String alignment){
+    public Entity(){
         entityIdCounter++;
-        this.name = name;
-        this.alignment = alignment;
-        this.uniqueID = entityIdCounter;
+        this.uniqueId = entityIdCounter;
     }
     // functional methods
 
@@ -46,8 +46,8 @@ public class Entity {
 
     // getters and setters
 
-    public int getUniqueID() {
-        return uniqueID;
+    public int getUniqueId() {
+        return uniqueId;
     }
 
     public String getName() {
@@ -106,5 +106,13 @@ public class Entity {
     }
     public void addToInventory(Item item) {
         inventory.add(item);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

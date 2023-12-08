@@ -2,12 +2,9 @@ import java.util.ArrayList;
 
 public class Character extends Entity {
     private String playerName;
-    private String description;
 
-    public Character(String name, String alignment, String playerName, String description){
-        super(name, alignment);
-        this.playerName = playerName;
-        this.description = description;
+
+    public Character() {
     }
 
     public String getPlayerName() {
@@ -16,14 +13,6 @@ public class Character extends Entity {
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public void lootLocation(Location location) {

@@ -1,52 +1,84 @@
-import java.util.ArrayList;
-
 public class Warrior extends Character {
-    private String specialty;
-    // TODO figure out whether to keep the "weapon" variable in the Warrior class, to do away with it entirely and house in inventory, or something else
-    private Weapon weapon;
+    private Weapon equippedWeapon;
     private int armorBonus;
     private int attackBonus;
     private int damageBonus;
 
-
-    public Warrior(String specialty, String name, String playerName, String alignment, String description) {
-        super(name, alignment, playerName, description);
-        this.specialty = specialty;
-        super.setArmorRating(10);
-
-        // TODO probably don't need specialties, maybe just drop archer since range means nothing? Either way, handle this as subclass
-        switch (specialty) {
-            case "Knight":
-                weapon = new Longsword();
-                armorBonus = 3;
-                break;
-            case "Berserker":
-                damageBonus = 3;
-                weapon = new BattleAxe();
-                break;
-            case "Archer":
-                attackBonus = 3;
-                weapon = new LongBow();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid specialty: " + specialty);
-        }
+    public Warrior() {
     }
+
     // functional methods
-    // TODO what makes a warrior's attack special?
+    // TODO what makes a warrior's attack method special?
     public void attack(Entity target){
         int attackRoll = Mechanics.rollDice(20, this.attackBonus);
         System.out.println(this.getName() +"'s attack roll is: " +attackRoll);
         System.out.println(target.getName() +"s armor rating is " +target.getArmorRating());
         if (attackRoll >= target.getArmorRating()){
-            int damageAmount = Mechanics.rollDice(weapon.getDamageSize(), this.damageBonus);
+            int damageAmount = Mechanics.rollDice(equippedWeapon.getDamageSize(), this.damageBonus);
             target.takeDamage(damageAmount);
             System.out.println(this.getName() +"'s damage amount is: " +damageAmount);
-            System.out.println(this.getName() +" deals " +damageAmount +" damage to " +target.getName()  +" with their trusty " +weapon.getItemName());
+            System.out.println(this.getName() +" deals " +damageAmount +" damage to " +target.getName()  +" with their trusty " + equippedWeapon.getItemName());
         }
         else {
-            System.out.println(this.getName() +" attacks " +target.getName() +" with their trusty " +weapon.getItemName() +" but misses.");
+            System.out.println(this.getName() +" attacks " +target.getName() +" with their trusty " + equippedWeapon.getItemName() +" but misses.");
         }
     }
 
+    // getters and setters
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
+    }
+
+    public int getArmorBonus() {
+        return armorBonus;
+    }
+
+    public void setArmorBonus(int armorBonus) {
+        this.armorBonus = armorBonus;
+    }
+
+    public void increaseArmorBonus(int armorBonus) {
+        this.armorBonus += armorBonus;
+    }
+
+    public void decreaseArmorBonus(int armorBonus) {
+        this.armorBonus -= armorBonus;
+    }
+
+    public int getAttackBonus() {
+        return attackBonus;
+    }
+
+    public void setAttackBonus(int attackBonus) {
+        this.attackBonus = attackBonus;
+    }
+
+    public void increaseAttackBonus(int attackBonus) {
+        this.attackBonus += attackBonus;
+    }
+
+    public void decreaseAttackBonus(int attackBonus) {
+        this.attackBonus -= attackBonus;
+    }
+
+    public int getDamageBonus() {
+        return damageBonus;
+    }
+
+    public void setDamageBonus(int damageBonus) {
+        this.damageBonus = damageBonus;
+    }
+
+    public void increaseDamageBonus(int damageBonus) {
+        this.damageBonus += damageBonus;
+    }
+
+    public void decreaseDamageBonus(int damageBonus) {
+        this.damageBonus -= damageBonus;
+    }
 }
