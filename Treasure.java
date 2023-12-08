@@ -3,7 +3,6 @@ public class Treasure extends Item{
 // TODO are we correctly constructing treasure?
     public Treasure(String itemName, int value){
         super.setItemName(itemName);
-        super.setItemType("Treasure");
         this.value = value;
     }
 

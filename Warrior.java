@@ -17,16 +17,16 @@ public class Warrior extends Character {
         // TODO probably don't need specialties, maybe just drop archer since range means nothing? Either way, handle this as subclass
         switch (specialty) {
             case "Knight":
-                weapon = new Weapon("longsword");
+                weapon = new Longsword();
                 armorBonus = 3;
                 break;
             case "Berserker":
                 damageBonus = 3;
-                weapon = new Weapon( "battle axe");
+                weapon = new BattleAxe();
                 break;
             case "Archer":
                 attackBonus = 3;
-                weapon = new Weapon( "longbow");
+                weapon = new LongBow();
                 break;
             default:
                 throw new IllegalArgumentException("Invalid specialty: " + specialty);

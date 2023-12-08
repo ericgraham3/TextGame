@@ -1,7 +1,6 @@
 public class Item {
     private static int itemIdCounter = 0;
     private final int uniqueID;
-    String itemType;
     String itemName;
     String itemDescription;
 
@@ -11,24 +10,16 @@ public class Item {
         this.uniqueID = itemIdCounter;
     }
 
-    public Item(String itemType, String itemName) {
+    public Item(String itemName) {
         itemIdCounter++;
-        this.itemType = itemType;
         this.itemName = itemName;
         this.uniqueID = itemIdCounter;
         }
-
-    public String getItemType() {
-        return itemType;
-    }
 
     public int getUniqueID() {
         return uniqueID;
     }
 
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
-    }
     public String getItemName() {
         return itemName;
     }

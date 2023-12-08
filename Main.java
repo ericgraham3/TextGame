@@ -20,15 +20,15 @@ public class Main {
 
         location1.addEntity(testSkeleton);
         location1.addEntity(testWarrior);
-        Item newItem = new Item("Treasure", "Gold Ring");
+        Item newItem = new Item("Gold Ring");
         System.out.println(newItem.getUniqueID());
-        Item newItem2 = new Item("Treasure", "Silver ring");
+        Item newItem2 = new Item("Silver ring");
         System.out.println(newItem2.getUniqueID());
-        Item newItem3 = new Item("Junk", "Broken Dagger");
+        Item newItem3 = new Item("Broken Dagger");
         System.out.println(newItem3.getUniqueID());
-        Item newItem4 = new Item("Junk", "Empty potion bottle");
+        Item newItem4 = new Item("Empty potion bottle");
         System.out.println(newItem4.getUniqueID());
-        Item newItem5 = new Item("Book", "Spellbook");
+        Item newItem5 = new Item("Spellbook");
         System.out.println(newItem5.getUniqueID());
         location1.addItem(newItem);
         location1.addItem(newItem2);

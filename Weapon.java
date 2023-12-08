@@ -1,29 +1,34 @@
 public class Weapon extends Item{
     private int damageSize;
+    private int attackBonus;
+    private String weaponDescription;
+
+    public Weapon() {
+    }
+
     public Weapon (String itemName){
-        super.setItemType("game.Weapon");
-        super.setItemName(itemName);
-        switch (itemName) {
-            case "longsword":
-                this.damageSize = 8;
-                break;
-            case "battle axe":
-                this.damageSize = 12;
-                break;
-            case "longbow":
-                this.damageSize = 6;
-                break;
-            case "rusty short sword":
-                this.damageSize = 4;
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid weapon: " + itemName);
-            }
+        this.setItemName(itemName);
     }
     public int getDamageSize() {
         return damageSize;
     }
     public void setDamageSize(int damageSize) {
         this.damageSize = damageSize;
+    }
+
+    public String getWeaponDescription() {
+        return weaponDescription;
+    }
+
+    public void setWeaponDescription(String weaponDescription) {
+        this.weaponDescription = weaponDescription;
+    }
+
+    public int getAttackBonus() {
+        return attackBonus;
+    }
+
+    public void setAttackBonus(int attackBonus) {
+        this.attackBonus = attackBonus;
     }
 }
