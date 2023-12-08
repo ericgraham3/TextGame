@@ -14,6 +14,8 @@ public class Entity {
 
     private String description;
 
+    private Weapon equippedWeapon;
+
     // constructor
     public Entity(){
         entityIdCounter++;
@@ -114,5 +116,13 @@ public class Entity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
+    public void setEquippedWeapon(Weapon equippedWeapon) {
+        this.equippedWeapon = equippedWeapon;
     }
 }
