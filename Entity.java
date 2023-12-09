@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Entity {
     private static int entityIdCounter = 0;
     private final int uniqueId;
-    private boolean isAlive = true;
+    private boolean Alive = true;
     private String name;
     private String alignment;
     private int armorRating = 0;
@@ -26,33 +26,32 @@ public class Entity {
 
     // functional methods
     public void attack(Entity target){
-        int attackRoll = Mechanics.rollDice(20, this.attackBonus);
-        System.out.println(this.getName() +"'s attack roll is: " +attackRoll);
-        System.out.println(target.getName() +"s armor rating is " +target.getArmorRating());
-        if (attackRoll >= target.getArmorRating()){
-            int damageAmount = Mechanics.rollDice(this.getEquippedWeapon().getDamageSize(), this.damageBonus);
-            target.takeDamage(damageAmount);
-            System.out.println(this.getName() +"'s damage amount is: " +damageAmount);
-            System.out.println(this.getName() +" deals " +damageAmount +" damage to " +target.getName()  +" with their " + this.getEquippedWeapon().getItemName());
-        }
-        else {
-            System.out.println(this.getName() +" attacks " +target.getName() +" with their " + this.getEquippedWeapon().getItemName() +" but misses.");
+        if (!target.isAlive()) {
+            System.out.println("Can't attack " +target.getName() +" , they are already dead!");
+            return;
+        } else {
+            int attackRoll = Mechanics.rollDice(20, this.getAttackBonus());
+            System.out.println(this.getName() + "'s attack roll is: " + attackRoll);
+            System.out.println(target.getName() + "s armor rating is " + target.getArmorRating());
+            if (attackRoll >= target.getArmorRating()) {
+                int damageAmount = Mechanics.rollDice(this.getEquippedWeapon().getDamageSize(), this.damageBonus);
+                System.out.println(this.getName() + " deals " + damageAmount + " damage to " + target.getName() + " with their " + this.getEquippedWeapon().getItemName());
+                target.takeDamage(damageAmount);
+            } else {
+                System.out.println(this.getName() + " attacks " + target.getName() + " with their " + this.getEquippedWeapon().getItemName() + " but misses.");
+            }
         }
     }
 
     public void takeDamage(int damageTaken){
         this.wounds += damageTaken;
-        System.out.println("This is printing from inside the takeDamage method and " +this.getName() +" has this currentHitPoints " +this.getCurrentHitPoints());
-        if (this.currentHitPoints <= 0) {
-            this.isAlive = false;
-            System.out.println("At this point, getAlive should be false, is it?" +this.isAlive());
+        if (this.getCurrentHitPoints() < 1) {
+            this.setAlive(false);
         }
 
     }
 
-    public void increaseArmorRating(int armorBonus){
-        this.armorRating += armorBonus;
-    }
+
 
     // getters and setters
 
@@ -61,12 +60,12 @@ public class Entity {
     }
 
     public boolean isAlive() {
-        return isAlive;
+        return Alive;
     }
 
     public void setAlive(boolean alive) {
-        isAlive = alive;
-        if (!this.isAlive) System.out.println(this.getName() +" is dead.");
+        Alive = alive;
+        if (!this.Alive) System.out.println(this.getName() +" is dead.");
     }
 
     public String getName() {
@@ -91,6 +90,10 @@ public class Entity {
 
     public void setArmorRating(int armorRating) {
         this.armorRating = armorRating;
+    }
+
+    public void increaseArmorRating(int armorBonus){
+        this.armorRating += armorBonus;
     }
 
     public int getHitPoints() {
@@ -203,5 +206,6 @@ public class Entity {
 
     public void setEquippedWeapon(Weapon equippedWeapon) {
         this.equippedWeapon = equippedWeapon;
+        this.increaseAttackBonus(equippedWeapon.getAttackBonus());
     }
 }

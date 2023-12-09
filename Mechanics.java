@@ -1,7 +1,7 @@
 import java.util.Random;
 public abstract class Mechanics {
         public static int rollDice(int size, int bonus) {
-            if (size != 4 && size != 6 && size != 8 && size != 10 && size != 12 && size != 20) {
+            if (size != 2 && size != 3 && size != 4 && size != 6 && size != 8 && size != 10 && size != 12 && size != 20) {
                 throw new IllegalArgumentException("Invalid die size. Supported sizes are 4, 6, 8, 10, 12, and 20.");
             }
 
