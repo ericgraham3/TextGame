@@ -27,6 +27,6 @@ public class Main {
         System.out.println("Berserker health: " +testBerserker.getCurrentHitPoints());
         System.out.println("Knight health: " +testKnight.getCurrentHitPoints());
         System.out.println("Skeleton health: " +testSkeleton.getCurrentHitPoints());
-        System.out.println("Is the skeleton alive?" +testSkeleton.isAlive());1
+        System.out.println("Is the skeleton alive?" +testSkeleton.isAlive());
     }
 }
