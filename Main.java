@@ -1,6 +1,3 @@
-import java.util.Locale;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -26,9 +23,10 @@ public class Main {
         testSkeleton.attack(testArcher);
         testBerserker.attack(testSkeleton);
         testKnight.attack(testSkeleton);
-        System.out.println("Archer health: " +testArcher.getCurrentHealth());
-        System.out.println("Berserker health: " +testBerserker.getCurrentHealth());
-        System.out.println("Knight health: " +testKnight.getCurrentHealth());
-        System.out.println("Skeleton health: " +testSkeleton.getCurrentHealth());
+        System.out.println("Archer health: " +testArcher.getCurrentHitPoints());
+        System.out.println("Berserker health: " +testBerserker.getCurrentHitPoints());
+        System.out.println("Knight health: " +testKnight.getCurrentHitPoints());
+        System.out.println("Skeleton health: " +testSkeleton.getCurrentHitPoints());
+        System.out.println("Is the skeleton alive?" +testSkeleton.isAlive());1
     }
 }

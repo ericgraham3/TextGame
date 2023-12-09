@@ -3,11 +3,13 @@ import java.util.ArrayList;
 public class Entity {
     private static int entityIdCounter = 0;
     private final int uniqueId;
+    private boolean isAlive = true;
     private String name;
     private String alignment;
     private int armorRating = 0;
     private int hitPoints = 10;
     private int wounds = 0;
+    private int currentHitPoints = this.hitPoints - this.wounds;
     private int initiative = 0;
     private int armorBonus;
     private int attackBonus;
@@ -21,8 +23,8 @@ public class Entity {
         entityIdCounter++;
         this.uniqueId = entityIdCounter;
     }
-    // functional methods
 
+    // functional methods
     public void attack(Entity target){
         int attackRoll = Mechanics.rollDice(20, this.attackBonus);
         System.out.println(this.getName() +"'s attack roll is: " +attackRoll);
@@ -37,22 +39,34 @@ public class Entity {
             System.out.println(this.getName() +" attacks " +target.getName() +" with their " + this.getEquippedWeapon().getItemName() +" but misses.");
         }
     }
+
     public void takeDamage(int damageTaken){
         this.wounds += damageTaken;
+        System.out.println("This is printing from inside the takeDamage method and " +this.getName() +" has this currentHitPoints " +this.getCurrentHitPoints());
+        if (this.currentHitPoints <= 0) {
+            this.isAlive = false;
+            System.out.println("At this point, getAlive should be false, is it?" +this.isAlive());
+        }
+
     }
 
     public void increaseArmorRating(int armorBonus){
         this.armorRating += armorBonus;
     }
 
-    public int getCurrentHealth(){
-        return this.hitPoints - this.wounds;
-    }
-
     // getters and setters
 
     public int getUniqueId() {
         return uniqueId;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setAlive(boolean alive) {
+        isAlive = alive;
+        if (!this.isAlive) System.out.println(this.getName() +" is dead.");
     }
 
     public String getName() {
@@ -93,6 +107,15 @@ public class Entity {
 
     public void setWounds(int wounds) {
         this.wounds = wounds;
+    }
+
+    public int getCurrentHitPoints(){
+        return this.hitPoints - this.wounds;
+    }
+
+    public void setCurrentHitPoints(int currentHitPoints) {
+        this.currentHitPoints = currentHitPoints;
+        if (this.currentHitPoints <= 0) this.setAlive(false);
     }
 
     public int getInitiative() {
@@ -157,6 +180,11 @@ public class Entity {
         }
         return inventory;
     }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+
     public void addToInventory(Item item) {
         inventory.add(item);
     }
