@@ -46,12 +46,9 @@ public class Entity {
     public void takeDamage(int damageTaken){
         this.wounds += damageTaken;
         if (this.getCurrentHitPoints() < 1) {
-            this.setAlive(false);
+            this.Alive = false;
         }
-
     }
-
-
 
     // getters and setters
 
