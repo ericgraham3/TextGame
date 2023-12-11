@@ -101,6 +101,8 @@ public class AdventureController {
 
     public void adventureMenu() {
         HashMap<String, String> locationMenu = getLocationMenu();
+        System.out.println("Location Name: " +model.getName());
+        System.out.println("Location Description: " +model.getDescription());
         for (Map.Entry<String, String> entry : locationMenu.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
