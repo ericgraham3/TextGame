@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.map;
 
 public class AdventureController {
     private Location model;
@@ -86,6 +88,10 @@ public class AdventureController {
         view.printLink(link);
     }
 
+    public void printViewSearch(String search) {
+        view.printSearch(search);
+    }
+
     public void printViewLoot(String loot) {
         view.printLoot(loot);
     }
@@ -94,5 +100,24 @@ public class AdventureController {
         view.printEmpty(empty);
     }
 
+    public void adventureMenu() {
+        HashMap<String, String> locationMenu = getLocationMenu();
+        for (Map.Entry<String, String> entry : locationMenu.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            if (key.equals("narrative1")) {
+                printViewNarrative(value);
+            }
+            else if (key.equals("search")) {
+                printViewSearch(value);
+            }
+            else if (key.equals("link1")) {
+                printViewLink(value);
+            }
+            else {
+                System.out.println("No locationMenu entries for this location");
+            }
+        }
+    }
 
 }

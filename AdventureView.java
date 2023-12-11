@@ -5,6 +5,9 @@ public class AdventureView {
     public void printLink(String link) {
         System.out.println(link);
     }
+    public void printSearch(String search) {
+        System.out.println(search);
+    }
     public void printLoot(String loot) {
         System.out.println(loot);
     }
