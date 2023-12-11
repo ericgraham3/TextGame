@@ -111,6 +111,10 @@ public class Location extends Adventure {
         this.locationMenu.replace(key, value);
     }
 
+    public void removeLocationMenu(String key, String value) {
+        this.locationMenu.remove(key, value);
+    }
+
     public String getName() {
         return name;
     }
