@@ -1,0 +1,17 @@
+{
+  "location" : {
+    "name": "location name from test JSON file",
+    "description": "location description from test JSON file",
+    "entities": [
+      {
+        "entity_1": "skeleton"
+      },
+      {
+        "entity_2": "skeleton"
+      },
+      {
+        "entity_3": "skeleton"
+      }
+    ]
+  }
+}

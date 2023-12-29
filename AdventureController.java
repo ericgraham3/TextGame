@@ -99,6 +99,7 @@ public class AdventureController {
         view.printEmpty(empty);
     }
 
+    // this is the actual game loop, as far as I know at this point
     public void adventureMenu() {
         HashMap<String, String> locationMenu = getLocationMenu();
         System.out.println("Location Name: " +model.getName());
@@ -106,17 +107,11 @@ public class AdventureController {
         for (Map.Entry<String, String> entry : locationMenu.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
-            if (key.equals("narrative1")) {
-                printViewNarrative(value);
-            }
-            else if (key.equals("search")) {
-                printViewSearch(value);
-            }
-            else if (key.equals("link1")) {
-                printViewLink(value);
-            }
-            else {
-                System.out.println("No locationMenu entries for this location");
+            switch (key) {
+                case "narrative1" -> printViewNarrative(value);
+                case "search" -> printViewSearch(value);
+                case "link1" -> printViewLink(value);
+                default -> System.out.println("No locationMenu entries for this location");
             }
         }
     }
