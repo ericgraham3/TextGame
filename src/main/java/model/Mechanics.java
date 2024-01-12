@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Random;
 public abstract class Mechanics {
         public static int rollDice(int size, int bonus) {

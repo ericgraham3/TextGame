@@ -1,3 +1,5 @@
+package model;
+
 public class Longsword extends Weapon{
     public Longsword() {
         this.setItemName("Longsword");

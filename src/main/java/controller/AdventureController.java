@@ -1,3 +1,8 @@
+package controller;
+
+import model.Location;
+import view.AdventureView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -77,7 +82,7 @@ public class AdventureController {
         model.setDescription(locationDescription);
     }
 
-    // control AdventureView object
+    // control view.AdventureView object
 
     public void printViewNarrative(String narrative) {
         view.printNarrative(narrative);

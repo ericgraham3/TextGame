@@ -1,3 +1,5 @@
+package model;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -5,7 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class AdventureLoader {
-    String filePath = "AdventureTest.json";
+    String filePath = "src/main/resources/AdventureTest.json";
 
     ObjectMapper objectMapper = new ObjectMapper();
 

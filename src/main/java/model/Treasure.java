@@ -1,3 +1,5 @@
+package model;
+
 public class Treasure extends Item{
     private int value;
 // TODO are we correctly constructing treasure?

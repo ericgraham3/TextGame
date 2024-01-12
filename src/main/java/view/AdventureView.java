@@ -1,3 +1,5 @@
+package view;
+
 public class AdventureView {
     public void printNarrative(String narrative) {
         System.out.println(narrative);

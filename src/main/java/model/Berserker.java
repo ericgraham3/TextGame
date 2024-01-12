@@ -1,13 +1,15 @@
-public class Knight extends Warrior{
-    public Knight(String name, String playerName, String alignment, String description) {
+package model;
+
+public class Berserker extends Warrior{
+    public Berserker(String name, String playerName, String alignment, String description) {
         this.setName(name);
         this.setAlignment(alignment);
         this.setArmorRating(10);
         this.setDescription(description);
         this.setPlayerName(playerName);
-        this.setArmorBonus(3);
+        this.setDamageBonus(3);
         // create a starting weapon, add it to inventory and equip it
-        Weapon startingWeapon = new Longsword();
+        Weapon startingWeapon = new BattleAxe();
         this.addToInventory(startingWeapon);
         this.setEquippedWeapon(startingWeapon);
         startingWeapon.setEquipped(true);

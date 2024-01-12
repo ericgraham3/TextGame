@@ -1,3 +1,5 @@
+package model;
+
 public class Item {
     private static int itemIdCounter = 0;
     private final int uniqueID;
