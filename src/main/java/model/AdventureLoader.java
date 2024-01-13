@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class AdventureLoader {
     String filePath = "src/main/resources/AdventureTest.json";
@@ -25,8 +28,14 @@ public class AdventureLoader {
 
             JsonNode entitiesArray = jsonNode.get("location").get("entities");
             for (JsonNode entityNode : entitiesArray) {
-                Skeleton skeleton = new Skeleton();
-                location.addEntity(skeleton);
+                Iterator<Map.Entry<String, JsonNode>> fields = entityNode.fields();
+                while (fields.hasNext()) {
+                    Map.Entry<String, JsonNode> entry = fields.next();
+                    if (entry.getValue().isTextual() && entry.getValue().asText().contains("skeleton")) {
+                        Skeleton skeleton = new Skeleton();
+                        location.addEntity(skeleton);
+                    }
+                }
             }
 
             System.out.println(location.getName());
